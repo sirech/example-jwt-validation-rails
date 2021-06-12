@@ -26,4 +26,17 @@ describe Api::MessagesController, type: :controller do
       expect(json_response!).to include('message' => message)
     end
   end
+
+  describe '#admin' do
+    subject { get :admin, params: { format: :json } }
+
+    it 'returns an accepted answer for the admin endpoint' do
+      subject
+
+      expect(response).to be_ok
+
+      message = 'The API successfully recognized you as an admin.'
+      expect(json_response!).to include('message' => message)
+    end
+  end
 end

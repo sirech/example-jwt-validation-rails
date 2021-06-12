@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       collection do
         get 'public'
         get 'protected'
+        get 'admin'
       end
     end
   end
