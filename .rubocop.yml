@@ -1,0 +1,43 @@
+require:
+  - rubocop-rspec
+  - rubocop-rails
+  - rubocop-rake
+
+AllCops:
+  Exclude:
+    - vendor/**/*
+    - db/schema.rb
+    - db/seeds.rb
+    - Gemfile
+    - Rakefile
+    - config/initializers/*.rb
+    - bin/*
+  NewCops: enable
+
+Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context']
+
+Layout/LineLength:
+  Max: 100
+
+RSpec/AnyInstance:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Exclude:
+    - spec/infra/*
+
+RSpec/ExampleLength:
+  Max: 10
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
