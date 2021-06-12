@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :api do
+    resources :messages, only: %i[] do
+      collection do
+        get 'public'
+      end
+    end
+  end
 end
