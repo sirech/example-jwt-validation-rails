@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :messages, only: %i[] do
       collection do
         get 'public'
+        get 'protected'
       end
     end
   end
