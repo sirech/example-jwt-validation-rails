@@ -29,7 +29,8 @@ class ApplicationController < ActionController::API
   end
 
   def check_permissions(token, permission)
-    permissions = token['permissions']&.split || []
+    permissions = token['permissions'] || []
+    permissions = permissions.split if permissions.is_a? String
 
     unless permissions.include?(permission)
       render json: { message: 'Access is denied' }.to_json,
