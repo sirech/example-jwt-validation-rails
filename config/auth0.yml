@@ -1,0 +1,3 @@
+development:
+  issuerUri: <%= ENV["AUTH0_DOMAIN"] %>
+  audience: <%= ENV["AUTH0_AUDIENCE"] %>
