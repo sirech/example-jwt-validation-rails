@@ -50,6 +50,7 @@ describe Api::MessagesController, type: :controller do
 
     it 'returns an accepted answer for the admin endpoint' do
       allow(JsonWebToken).to receive(:verify).and_return({token: :valid, "permissions" => "read:admin-messages"})
+
       subject
 
       expect(response).to be_ok
