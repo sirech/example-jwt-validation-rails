@@ -24,8 +24,7 @@ class JsonWebToken
     end
 
     def jwks_hash
-      issuer = Rails.application.config.x.auth0.issuerUri
-      jwks_raw = Net::HTTP.get URI("https://#{issuer}/.well-known/jwks.json")
+      jwks_raw = Net::HTTP.get URI("https://#{Rails.configuration.auth0.domain}/.well-known/jwks.json")
       jwks_keys = Array(JSON.parse(jwks_raw)['keys'])
       jwks_keys.map do |k|
         [

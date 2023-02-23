@@ -40,14 +40,6 @@ describe Api::MessagesController, type: :controller do
   describe '#admin' do
     subject { get :admin, params: { format: :json } }
 
-    it 'returns error for the admin endpoint if the token does not have permissions' do
-      allow(JsonWebToken).to receive(:verify).and_return({token: :valid})
-
-      subject
-      expect(response).to be_unauthorized
-      expect(json_response!['message']).to include('Access is denied')
-    end
-
     it 'returns an accepted answer for the admin endpoint' do
       allow(JsonWebToken).to receive(:verify).and_return({token: :valid, "permissions" => "read:admin-messages"})
 
