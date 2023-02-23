@@ -68,6 +68,10 @@ GEM
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     diff-lcs (1.4.4)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.10.0)
     ffi (1.15.1)
     globalid (0.4.2)
@@ -199,6 +203,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
+  dotenv-rails
   jwt
   listen (~> 3.3)
   puma (~> 5.0)
