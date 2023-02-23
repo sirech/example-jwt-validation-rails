@@ -19,6 +19,9 @@ describe JsonWebToken do
 
   describe '.verify' do
     before do
+      allow(Rails.configuration).to receive_message_chain("auth0.domain").and_return("AUTH0_DOMAIN_STUB")
+      allow(Rails.configuration).to receive_message_chain("auth0.audience").and_return("AUTH0_AUDIENCE_STUB")
+
       allow(Net::HTTP).to receive(:get).and_return(jwks_raw)
     end
 
