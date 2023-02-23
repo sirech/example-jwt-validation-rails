@@ -17,17 +17,17 @@ describe Api::MessagesController, type: :controller do
   describe '#protected' do
     subject { get :protected, params: { format: :json } }
 
-    context "with error" do 
-      include_examples "invalid token", "Invalid audience"
-      include_examples "invalid token", "Nil JSON web token"
-      include_examples "invalid token", "Signature has expired"
-      include_examples "invalid token", "Invalid issuer"
+    context 'with error' do
+      include_examples 'invalid token', 'Invalid audience'
+      include_examples 'invalid token', 'Nil JSON web token'
+      include_examples 'invalid token', 'Signature has expired'
+      include_examples 'invalid token', 'Invalid issuer'
     end
 
-    context "valid" do 
+    context 'valid' do
       it 'returns an accepted answer for the protected endpoint' do
-        allow(JsonWebToken).to receive(:verify).and_return({token: :valid})
-        
+        allow(JsonWebToken).to receive(:verify).and_return(double(decoded_token: :valid, error: nil))
+
         subject
         expect(response).to be_ok
 
@@ -41,7 +41,7 @@ describe Api::MessagesController, type: :controller do
     subject { get :admin, params: { format: :json } }
 
     it 'returns an accepted answer for the admin endpoint' do
-      allow(JsonWebToken).to receive(:verify).and_return({token: :valid, "permissions" => "read:admin-messages"})
+      allow(JsonWebToken).to receive(:verify).and_return(double(decoded_token: :valid, error: nil))
 
       subject
 
